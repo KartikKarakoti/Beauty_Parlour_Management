@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Services | Shine & Smile Beauty Salon</title>
+  <meta name="description"
+    content="Explore our hair, face, and body services at Shine & Smile Beauty Salon. Luxury treatments at affordable prices.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ===== Global ===== */
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: url('https://images.unsplash.com/photo-1570197785460-2d8f38c8d3f3') center/cover fixed;
+      color: #fff;
+      line-height: 1.8;
+      margin: 0;
+      padding-top: 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+
+    .navbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      background: linear-gradient(120deg, #8b6d11 0%, #daa520 20%, #ffdf6c 40%, #daa520 60%, #8b6d11 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    .nav-link.active {
+      font-weight: 600;
+      border-bottom: 2px solid #000;
+    }
+
+    /* ===== Services Section ===== */
+    .services-section {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 100px 0;
+    }
+
+    .services-section h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      text-decoration: underline;
+    }
+
+    /* ===== Masonry Layout ===== */
+    .masonry-grid {
+      column-count: 1;
+      column-gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .masonry-grid {
+        column-count: 2;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .masonry-grid {
+        column-count: 3;
+      }
+    }
+
+    .service-card-wrapper {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== Service Cards ===== */
+    .service-card {
+      padding: 35px 25px;
+      border-radius: 18px;
+      transition: 0.4s ease;
+      background: rgba(255, 255, 255, 0.05);
+      /* Slight background for better visibility */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      /* Simple lift instead of scale to avoid blur */
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    /* ===== Service List ===== */
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .service-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 1rem;
+    }
+
+    .price {
+      font-weight: 500;
+      color: #ffdf6c;
+    }
+
+    /* ===== Mobile ===== */
+    @media(max-width:768px) {
+      .services-section {
+        padding: 70px 0;
+        text-align: center;
+      }
+    }
+
+    /* ===== Reduced Motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 22px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">Shine & Smile Beauty Salon</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbar">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item ms-3">
+            <a href="appointment.html" class="btn btn-dark">Get Appointment</a>
+          </li>
+          <li class="nav-item ms-3">
+            <a href="/admin" class="nav-link text-dark fs-5" title="Admin Login">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+
+      <h1 class="text-center">Our Services</h1>
+
+
+      <!-- ==================== Face & Skin Care ==================== -->
+      <div class="mb-5">
+        <h2 class="text-start border-bottom pb-2 mb-4"
+          style="font-family: 'Cormorant Garamond', serif; border-color: rgba(255,255,255,0.2) !important;">Face & Skin
+          Care</h2>
+        <div class="masonry-grid">
+
+          <!-- Threading -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-magic me-2"></i>Threading</h2>
+              <ul class="service-list">
+                <li>Eye Brow <span class="price">₹50</span></li>
+                <li>Upper Lip <span class="price">₹20</span></li>
+                <li>Chin <span class="price">₹30</span></li>
+                <li>Forehead <span class="price">₹10</span></li>
+                <li>Face Threading <span class="price">₹150 – 250</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Bleach -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-brightness-high me-2"></i>Bleach</h2>
+              <ul class="service-list">
+                <li>Herbal Bleach <span class="price">₹250+</span></li>
+                <li>Oxy Bleach <span class="price">₹350+</span></li>
+                <li>Gold Bleach <span class="price">₹500+</span></li>
+                <li>Diamond Bleach <span class="price">₹700+</span></li>
+                <li>Body Bleach <span class="price">₹1700+</span></li>
+                <li>Hand Bleach <span class="price">₹500+</span></li>
+                <li>Full Leg Bleach <span class="price">₹700+</span></li>
+                <li>Under Arm Bleach <span class="price">₹200+</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Facial -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-stars me-2"></i>Facial</h2>
+              <ul class="service-list">
+                <li>Clean Up <span class="price">₹350 – 500</span></li>
+                <li>D-Tan <span class="price">₹500 – 1000</span></li>
+                <li>Herbal Facial <span class="price">₹550+</span></li>
+                <li>Fruit Facial <span class="price">₹600+</span></li>
+                <li>Gold Facial <span class="price">₹1000 – 2000</span></li>
+                <li>Diamond Facial <span class="price">₹1200 – 2000</span></li>
+                <li>Lotus Facial <span class="price">₹1000+</span></li>
+                <li>Fairness Facial <span class="price">₹800+</span></li>
+                <li>Wine Facial <span class="price">₹700+</span></li>
+                <li>Bridal Glow Facial <span class="price">₹1500+</span></li>
+                <li>Shahnaz Facial <span class="price">₹2000+</span></li>
+                <li>Hydra Facial <span class="price">₹2000 – 5000</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Treatment Facial -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-clipboard-pulse me-2"></i>Treatments</h2>
+              <ul class="service-list">
+                <li>Acne Treatment <span class="price">₹1000 – 1500</span></li>
+                <li>Pigmentation Treatment <span class="price">₹1100 – 1600</span></li>
+                <li>D-Tan Facial <span class="price">₹800 – 1200</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== Body & Waxing ==================== -->
+      <div class="mb-5">
+        <h2 class="text-start border-bottom pb-2 mb-4"
+          style="font-family: 'Cormorant Garamond', serif; border-color: rgba(255,255,255,0.2) !important;">Body &
+          Waxing</h2>
+        <div class="masonry-grid">
+
+          <!-- Waxing -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-droplet-half me-2"></i>Waxing</h2>
+              <ul class="service-list">
+                <li>Upper Lip Wax <span class="price">₹50</span></li>
+                <li>Face Wax <span class="price">₹150 – 300</span></li>
+                <li>Hand Wax <span class="price">₹300 – 400</span></li>
+                <li>Flavored Hand Wax <span class="price">₹400 – 500</span></li>
+                <li>Under Arms <span class="price">₹100 – 200</span></li>
+                <li>Half Legs <span class="price">₹400 – 600</span></li>
+                <li>Flavored Half Legs <span class="price">₹500 – 700</span></li>
+                <li>Full Leg <span class="price">₹600 – 800</span></li>
+                <li>Flavored Full Leg <span class="price">₹700 – 1000</span></li>
+                <li>Body Waxing <span class="price">₹2000+</span></li>
+                <li>Body Polishing <span class="price">₹2000+</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Rica Wax -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-droplet me-2"></i>Rica Wax</h2>
+              <ul class="service-list">
+                <li>Hand Wax <span class="price">₹700+</span></li>
+                <li>Under Arms <span class="price">₹200+</span></li>
+                <li>Half Leg <span class="price">₹700 – 900</span></li>
+                <li>Full Leg <span class="price">₹1000 – 1500</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Roll On Wax -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-stars me-2"></i>Roll On Wax</h2>
+              <ul class="service-list">
+                <li>Hand Wax <span class="price">₹400 – 500</span></li>
+                <li>Half Leg <span class="price">₹600 – 700</span></li>
+                <li>Full Leg <span class="price">₹750 – 900</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== Hair Studio ==================== -->
+      <div class="mb-5">
+        <h2 class="text-start border-bottom pb-2 mb-4"
+          style="font-family: 'Cormorant Garamond', serif; border-color: rgba(255,255,255,0.2) !important;">Hair Studio
+        </h2>
+        <div class="masonry-grid">
+
+          <!-- Hair Cut -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-scissors me-2"></i>Hair Cut</h2>
+              <ul class="service-list">
+                <li>Straight Cut <span class="price">₹100 – 200</span></li>
+                <li>U Cut <span class="price">₹150 – 250</span></li>
+                <li>V Cut <span class="price">₹150 – 250</span></li>
+                <li>Step Cut <span class="price">₹300 – 600</span></li>
+                <li>Feather Cut <span class="price">₹300 – 600</span></li>
+                <li>Layer Cut <span class="price">₹350 – 600</span></li>
+                <li>Baby Cut <span class="price">₹150 – 350</span></li>
+                <li>Front Layer <span class="price">₹100 – 150</span></li>
+                <li>Front Side <span class="price">₹50 – 100</span></li>
+                <li>Hair Split End <span class="price">₹200 – 450</span></li>
+                <li>Manicure <span class="price">₹400</span></li>
+                <li>Pedicure <span class="price">₹600 – 1000</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Hair Care -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-droplet-fill me-2"></i>Hair Care</h2>
+              <ul class="service-list">
+                <li>Hair Wash <span class="price">₹200 – 300</span></li>
+                <li>Wash + Blow Dry <span class="price">₹500 – 600</span></li>
+                <li>Hair Color App <span class="price">₹200 – 500</span></li>
+                <li>Hair Henna App <span class="price">₹200 – 500</span></li>
+                <li>Hair Color + Wash <span class="price">₹800 – 1800</span></li>
+                <li>Temp Straight <span class="price">₹500 – 1000</span></li>
+                <li>Hair Highlights <span class="price">₹250 – 3000</span></li>
+                <li>Hair Spa <span class="price">₹1000+</span></li>
+                <li>Dandruff Spa <span class="price">₹1500</span></li>
+                <li>Oil Massage <span class="price">₹400 – 800</span></li>
+                <li>Perm Straight <span class="price">₹4000+</span></li>
+                <li>Perm Smoothing <span class="price">₹5000+</span></li>
+                <li>Keratine <span class="price">₹5000+</span></li>
+                <li>Botox Treatment <span class="price">₹5000+</span></li>
+                <li>Hair Fall Treat <span class="price">₹1000 – 1500</span></li>
+                <li>Dandruff Treat <span class="price">₹1100 – 1600</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== Bridal & Special ==================== -->
+      <div>
+        <h2 class="text-start border-bottom pb-2 mb-4"
+          style="font-family: 'Cormorant Garamond', serif; border-color: rgba(255,255,255,0.2) !important;">Bridal &
+          Special</h2>
+        <div class="masonry-grid">
+
+          <!-- Mehandi & Bridal -->
+          <div class="service-card-wrapper">
+            <div class="service-card" role="button">
+              <h2 class="service-title"><i class="bi bi-flower1 me-2"></i>Bridal</h2>
+              <ul class="service-list">
+                <li>Simple Design <span class="price">₹200 – 1000</span></li>
+                <li>Bridal Mehandi <span class="price">₹2500 – 4000</span></li>
+                <li>Bridal Make-Up <span class="price">₹5000+</span></li>
+                <li>Non-Bridal Make-Up <span class="price">₹2000+</span></li>
+                <li>Hair Style <span class="price">₹350+</span></li>
+                <li>Saree Draping <span class="price">₹400 – 500</span></li>
+                <li>Saree Pre-Pleating <span class="price">₹400 – 500</span></li>
+                <li>Box Folding <span class="price">₹400 – 500</span></li>
+              </ul>
+              <a href="appointment.html" class="btn btn-outline-light btn-sm mt-3">Book Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-center mt-5 small opacity-75">
+        * Prices may vary based on hair length and service complexity
+      </p>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2026 Shine & Smile Beauty Salon</p>
+      <p class="mb-0 small opacity-75">
+        Built with <a href="https://getbootstrap.com/" class="text-white text-decoration-none" target="_blank">Bootstrap
+          5</a>
+        <span class="mx-2">|</span>
+        Developed by <span class="text-white">Adith Kushal</span> & <span class="text-white">Kartik Karakoti</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+
+</html>
