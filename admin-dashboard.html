@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Shine & Smile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9") center/cover no-repeat fixed;
+            padding: 40px 0;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Dark overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: -1;
+        }
+
+        .dashboard-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 25px 35px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0;
+            font-size: 2.2rem;
+            background: linear-gradient(120deg, #8b6d11 0%, #daa520 20%, #ffdf6c 40%, #daa520 60%, #8b6d11 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 25px;
+            transition: 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: #ff4757;
+            border-color: #ff4757;
+            color: white;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Custom Table Styles */
+        .table {
+            color: #fff;
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+        }
+
+        .table tbody td {
+            background: transparent;
+            color: #eee;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        .table-hover tbody tr:hover td {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container dashboard-container">
+        <div class="header">
+            <div>
+                <h2>Appointments Dashboard</h2>
+                <button onclick="resetAllAppointments()" class="btn btn-danger btn-sm mt-2">
+                    <i class="bi bi-trash"></i> Reset All Appointments
+                </button>
+            </div>
+            <a href="/admin/logout" class="btn btn-logout">Logout</a>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Category</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Booked At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="appointments-body">
+                    <!-- Data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        async function loadAppointments() {
+            try {
+                const response = await fetch('/api/appointments');
+                if (response.status === 401) {
+                    window.location.href = '/admin';
+                    return;
+                }
+                const appointments = await response.json();
+
+                const tbody = document.getElementById('appointments-body');
+                tbody.innerHTML = appointments.map(appt => `
+                    <tr>
+                        <td>${appt.id}</td>
+                        <td>${appt.full_name}</td>
+                        <td>${appt.phone}</td>
+                        <td><span class="badge bg-secondary">${appt.category}</span></td>
+                        <td>${appt.service}</td>
+                        <td>${new Date(appt.appointment_date).toLocaleDateString()}</td>
+                        <td>${appt.appointment_time}</td>
+                        <td>${new Date(appt.created_at).toLocaleString()}</td>
+                        <td>
+                            <button onclick="cancelAppointment(${appt.id})" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-trash"></i> Cancel
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Error loading appointments:', err);
+            }
+        }
+
+        async function resetAllAppointments() {
+            if (!confirm("Are you sure you want to clear ALL appointments? This action cannot be undone.")) {
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/appointments/reset-all', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    alert(data.message);
+                    window.location.reload(); // Reload the page as requested
+                } else {
+                    alert("Error: " + data.error);
+                }
+            } catch (err) {
+                console.error('Reset error:', err);
+                alert("Failed to reset appointments.");
+            }
+        }
+
+        async function cancelAppointment(id) {
+            if (!confirm("Are you sure you want to cancel this appointment?")) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/appointments/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // Alert commented out for smoother UX as requested ("disappear from page")
+                    // alert(data.message); 
+
+                    // Immediately remove the row from the table
+                    const btn = document.querySelector(`button[onclick="cancelAppointment(${id})"]`);
+                    if (btn) {
+                        const row = btn.closest('tr');
+                        row.classList.add('fade-out'); // Optional: could add CSS for this
+                        setTimeout(() => row.remove(), 300);
+                    }
+                } else {
+                    let errorMessage = "Failed to delete appointment.";
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.error || errorMessage;
+                    } catch (e) {
+                        // Response wasn't JSON (e.g. 404 HTML page because server not restarted)
+                        errorMessage = `Server Error (${response.status}). Please ensure the server is restarted.`;
+                    }
+                    alert(errorMessage);
+                }
+            } catch (err) {
+                console.error('Delete error:', err);
+                alert("Network error or server unreachable. Please check if the server is running.");
+            }
+        }
+
+        loadAppointments();
+    </script>
+</body>
+
+</html>
