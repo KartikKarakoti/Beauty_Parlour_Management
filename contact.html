@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | Shine & Smile Beauty Salon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ===== Global ===== */
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      margin: 0;
+      padding-top: 90px;
+      background: url('https://images.unsplash.com/photo-1600185360496-94f2ff1e0e44') center/cover fixed;
+      color: #f1f1f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(0, 0, 0, .88),
+          rgba(0, 0, 0, .78));
+      z-index: -1;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(120deg, #8b6d11 0%, #daa520 20%, #ffdf6c 40%, #daa520 60%, #8b6d11 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    .nav-link.active {
+      text-decoration: underline;
+    }
+
+    .btn-dark {
+      border-radius: 28px;
+      padding: 8px 26px;
+    }
+
+    /* ===== Section ===== */
+    .contact-section {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      letter-spacing: 1px;
+    }
+
+    .contact-section p {
+      opacity: .75;
+      margin: 10px 0 70px;
+    }
+
+    /* ===== Card ===== */
+    .contact-box {
+      max-width: 660px;
+      margin: auto;
+      padding: 55px;
+      border-radius: 28px;
+      background: rgba(15, 15, 15, .55);
+      backdrop-filter: blur(14px);
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, .9),
+        inset 0 0 0 1px rgba(255, 215, 0, .12);
+      text-align: left;
+      opacity: 0;
+      transform: translateY(70px);
+      transition: .9s ease;
+    }
+
+    .contact-box.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Contact Items ===== */
+    .contact-item {
+      display: flex;
+      gap: 22px;
+      padding: 20px;
+      border-radius: 20px;
+      transition: .35s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .contact-item i {
+      font-size: 1.6rem;
+      color: #e6c200;
+    }
+
+    .contact-item span {
+      font-weight: 500;
+      color: #e6c200;
+    }
+
+    /* Links */
+    .contact-item a {
+      color: #f1f1f1;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: #e6c200;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e6c200, transparent);
+      margin: 26px 0;
+    }
+
+    /* ===== Map ===== */
+    .map-box {
+      margin-top: 20px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .85);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 230px;
+      border: 0;
+    }
+
+    .map-caption {
+      text-align: center;
+      font-size: .85rem;
+      opacity: .75;
+      margin-top: 8px;
+    }
+
+    /* ===== Mobile ===== */
+    @media(max-width:576px) {
+      .contact-box {
+        padding: 38px 26px;
+      }
+
+      .contact-section h2 {
+        font-size: 2.4rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 22px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">Shine & Smile Beauty Salon</a>
+
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
+          <li class="nav-item ms-3">
+            <a href="appointment.html" class="btn btn-dark">Get Appointment</a>
+          </li>
+          <li class="nav-item ms-3">
+            <a href="/admin" class="nav-link text-dark fs-5" title="Admin Login">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="container">
+
+      <h2>Get In Touch</h2>
+      <p>Luxury care begins with a simple hello ✨</p>
+
+      <div class="contact-box" id="contactBox">
+
+        <div class="contact-item">
+          <i class="bi bi-person-heart"></i>
+          <div><span>Owner</span><br>Divitha B.A</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="contact-item">
+          <i class="bi bi-telephone-fill"></i>
+          <div><span>Phone</span><br><a href="tel:9483264845">9483264845</a></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="contact-item">
+          <i class="bi bi-envelope-fill"></i>
+          <div><span>Email</span><br><a href="mailto:divithaarun@gmail.com">divithaarun@gmail.com</a></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="contact-item">
+          <i class="bi bi-geo-alt-fill"></i>
+          <div>
+            <span>Address</span><br>
+            Hudikeri Main Road,<br>
+            Opp. Union Bank,<br>
+            South Coorg – 571213
+
+            <a class="map-box d-block mt-3" href="https://www.google.com/maps?q=12.08571,75.94199" target="_blank">
+              <iframe src="https://www.google.com/maps?q=12.08571,75.94199&output=embed" loading="lazy">
+              </iframe>
+            </a>
+
+            <div class="map-caption">Tap map to open in Google Maps</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2026 Shine & Smile Beauty Salon</p>
+      <p class="mb-0 small opacity-75">
+        Built with <a href="https://getbootstrap.com/" class="text-white text-decoration-none" target="_blank">Bootstrap
+          5</a>
+        <span class="mx-2">|</span>
+        Developed by <span class="text-white">Adith Kushal</span> & <span class="text-white">Kartik Karakoti</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(document.getElementById("contactBox"));
+  </script>
+
+</body>
+
+</html>
