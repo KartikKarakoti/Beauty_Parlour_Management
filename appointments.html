@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment | Shine & Smile Beauty Salon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== Global ===== */
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9') center/cover no-repeat;
+            color: #fff;
+            padding-top: 90px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Dark overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, .85),
+                    rgba(0, 0, 0, .7));
+            z-index: -1;
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            background: linear-gradient(120deg, #8b6d11 0%, #daa520 20%, #ffdf6c 40%, #daa520 60%, #8b6d11 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .nav-link {
+            color: #000 !important;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+
+        .nav-link.active {
+            color: #e6c200 !important;
+            font-weight: 700;
+        }
+
+        /* ===== Appointment Card ===== */
+        .appointment-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            padding: 45px;
+            border-radius: 24px;
+            max-width: 520px;
+            margin: auto;
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.8);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        /* CSS animation (no JS) */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Headings */
+        .appointment-box h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.7rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .appointment-box p {
+            text-align: center;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Inputs */
+        .form-control,
+        .form-select {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 14px;
+            padding: 12px 15px;
+            margin-bottom: 18px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            box-shadow: 0 0 0 0.2rem rgba(230, 194, 0, 0.6);
+        }
+
+        /* Button */
+        .btn-book {
+            width: 100%;
+            padding: 12px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 500;
+            background: #000;
+            color: #fff;
+            transition: 0.3s ease;
+        }
+
+        .btn-book:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+
+        /* Mobile */
+        @media(max-width:576px) {
+            .appointment-box {
+                padding: 35px 25px;
+            }
+
+            .appointment-box h2 {
+                font-size: 2.3rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 22px;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">Shine & Smile Beauty Salon</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="appointment.html">Get Appointment</a></li>
+                    <li class="nav-item ms-3">
+                        <a href="/admin" class="nav-link text-dark fs-5" title="Admin Login">
+                            <i class="bi bi-person-circle"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- APPOINTMENT FORM -->
+    <div class="appointment-box mt-5">
+        <h2>Book Your Appointment</h2>
+        <p>Your glow journey starts here ✨</p>
+
+        <!-- PURE HTML redirect -->
+        <form action="/submit-appointment" method="POST">
+
+            <input type="text" class="form-control" name="fullName" placeholder="Your Full Name" required>
+
+            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" pattern="[0-9]{10}"
+                maxlength="10" inputmode="numeric" required>
+
+            <!-- Category Select -->
+            <select class="form-select" id="categorySelect" name="category" required>
+                <option value="">Select Category</option>
+                <option value="Face & Skin Care">Face & Skin Care</option>
+                <option value="Body & Waxing">Body & Waxing</option>
+                <option value="Hair Studio">Hair Studio</option>
+                <option value="Bridal & Special">Bridal & Special</option>
+            </select>
+
+            <!-- Service Select (Dependent) -->
+            <select class="form-select" name="service" id="serviceSelect" disabled required>
+                <option value="">Select Category First</option>
+            </select>
+
+            <input type="date" class="form-control" name="date" id="appointmentDate" required>
+
+            <select class="form-select" name="time" required>
+                <option value="">Select Time</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="10:30">10:30 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="11:30">11:30 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="12:30">12:30 PM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="13:30">01:30 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="14:30">02:30 PM</option>
+                <option value="15:00">03:00 PM</option>
+                <option value="15:30">03:30 PM</option>
+                <option value="16:00">04:00 PM</option>
+                <option value="16:30">04:30 PM</option>
+                <option value="17:00">05:00 PM</option>
+                <option value="17:30">05:30 PM</option>
+                <option value="18:00">06:00 PM</option>
+                <option value="18:30">06:30 PM</option>
+                <option value="19:00">07:00 PM</option>
+            </select>
+
+            <button type="submit" class="btn-book">
+                Confirm Appointment
+            </button>
+
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="mb-0">© 2026 Shine & Smile Beauty Salon</p>
+            <p class="mb-0 small opacity-75">
+                Built with <a href="https://getbootstrap.com/" class="text-white text-decoration-none"
+                    target="_blank">Bootstrap 5</a>
+                <span class="mx-2">|</span>
+                Developed by <span class="text-white">Adith Kushal</span> & <span class="text-white">Kartik
+                    Karakoti</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (only for navbar toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dynamic Dropdown Logic & Date Restriction -->
+    <script>
+        // Set minimum date to today and maximum to 7 days from now
+        const dateInput = document.getElementById('appointmentDate');
+        const now = new Date();
+        const today = now.toISOString().split('T')[0];
+
+        const nextWeek = new Date();
+        nextWeek.setDate(now.getDate() + 7);
+        const maxDate = nextWeek.toISOString().split('T')[0];
+
+        dateInput.setAttribute('min', today);
+        dateInput.setAttribute('max', maxDate);
+
+        const serviceData = {
+            "Face & Skin Care": ["Threading", "Bleach", "Facial", "Treatments"],
+            "Body & Waxing": ["Waxing", "Rica Wax", "Roll On Wax"],
+            "Hair Studio": ["Hair Cut", "Hair Care"],
+            "Bridal & Special": ["Bridal"]
+        };
+
+        const categorySelect = document.getElementById('categorySelect');
+        const serviceSelect = document.getElementById('serviceSelect');
+
+        categorySelect.addEventListener('change', function () {
+            const category = this.value;
+            serviceSelect.innerHTML = '<option value="">Select Service</option>';
+
+            if (category && serviceData[category]) {
+                serviceData[category].forEach(service => {
+                    const option = document.createElement('option');
+                    option.value = service;
+                    option.textContent = service;
+                    serviceSelect.appendChild(option);
+                });
+                serviceSelect.disabled = false;
+            } else {
+                serviceSelect.innerHTML = '<option value="">Select Category First</option>';
+                serviceSelect.disabled = true;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
