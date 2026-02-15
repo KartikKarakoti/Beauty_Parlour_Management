@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1770278042183,
+    "fullName": "Test User",
+    "phone": "1234567890",
+    "service": "Facial",
+    "date": "2024-01-01",
+    "time": "10:00",
+    "createdAt": "2026-02-05T07:54:02.183Z"
+  },
+  {
+    "id": 1770278268923,
+    "fullName": "manu ",
+    "phone": "9145455466",
+    "service": "Hair Spa",
+    "date": "2026-02-04",
+    "time": "09:30",
+    "createdAt": "2026-02-05T07:57:48.923Z"
+  }
+]
