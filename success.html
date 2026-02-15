@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Appointment Confirmed | Shine & Smile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ===== Global ===== */
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      margin: 0;
+      background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9') center/cover fixed;
+      color: #f1f1f1;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(0, 0, 0, .9),
+          rgba(0, 0, 0, .75));
+      z-index: -1;
+    }
+
+    /* ===== Card ===== */
+    .confirm-card {
+      background: rgba(15, 15, 15, .6);
+      backdrop-filter: blur(14px);
+      padding: 60px 55px;
+      border-radius: 28px;
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, .9),
+        inset 0 0 0 1px rgba(255, 215, 0, .15);
+      text-align: center;
+      animation: fadeUp .9s ease forwards;
+    }
+
+    /* Heading */
+    .confirm-card h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(120deg, #8b6d11 0%, #daa520 20%, #ffdf6c 40%, #daa520 60%, #8b6d11 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+      margin-bottom: 15px;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* Text */
+    .confirm-card p {
+      font-size: 1.1rem;
+      opacity: .85;
+    }
+
+    /* Button */
+    .confirm-card .btn {
+      border-radius: 30px;
+      padding: 10px 30px;
+      margin-top: 25px;
+    }
+
+    /* Animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile */
+    @media(max-width:576px) {
+      .confirm-card {
+        padding: 45px 30px;
+      }
+
+      .confirm-card h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="d-flex align-items-center justify-content-center vh-100">
+
+  <div class="confirm-card">
+    <h1>✨ Appointment Confirmed</h1>
+    <p>Thank you for choosing <strong>Shine & Smile</strong>.<br>
+      We can’t wait to make you beautiful 💖</p>
+
+    <a href="home.html" class="btn btn-dark">Back to Home</a>
+  </div>
+
+</body>
+
+</html>
